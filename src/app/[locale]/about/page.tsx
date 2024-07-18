@@ -1,6 +1,5 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
+import React from 'react'
+import styles from "../../page.module.css";
 export async function generateMetadata() {
   const getAllMetaData = await fetch('https://websiteapi-dev.fidelen.sa/api/Website/Settings/GetWebSiteMetaDatas',   {
     method: "GET",
@@ -20,7 +19,7 @@ export async function generateMetadata() {
 
   // Assuming homepage data is at a specific index or has a specific property
   const metaDataDetail = AllMetaDataTags.find(
-    (page: any) => page.pageType === 1
+    (page: any) => page.pageType === 11
   ); // Adjust the condition as per your data
   // const metaDataDetail = await res.json();
 
@@ -30,7 +29,7 @@ export async function generateMetadata() {
       openGraph: {
           title: metaDataDetail.enTitle,
           description: metaDataDetail.enDescription,
-          url: 'https://practice-delta-ruddy.vercel.app/en',
+          url: 'https://practice-delta-ruddy.vercel.app/en/about',
           siteName: 'fidelen',
           images: [
               {
@@ -42,15 +41,15 @@ export async function generateMetadata() {
       },
   };
 }
-
-export default function Home() {
+const page = () => {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
-          Home Page
+          About Page
         </p>
       </div>
-    </main>
-  );
+    </main>  )
 }
+
+export default page
