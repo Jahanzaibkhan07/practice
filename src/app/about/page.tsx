@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "../../page.module.css";
+import styles from "../page.module.css";
 export async function generateMetadata() {
   const getAllMetaData = await fetch('https://websiteapi-dev.fidelen.sa/api/Website/Settings/GetWebSiteMetaDatas',   {
     method: "GET",
