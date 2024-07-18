@@ -5,7 +5,7 @@ export const metadata = {
   openGraph: {
     title: 'Next.js',
     description: 'The React Framework for the Web',
-    url: 'https://practice.vercel.app',
+    url: 'https://practice-delta-ruddy.vercel.app',
     siteName: 'Next.js',
     images: [
       {
