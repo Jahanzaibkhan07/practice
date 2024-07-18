@@ -1,7 +1,10 @@
 import Image from "next/image";
 import styles from "../page.module.css";
+import { useRouter } from "next/router";
 
 export async function generateMetadata() {
+  const router=useRouter()
+
   const getAllMetaData = await fetch('https://websiteapi-dev.fidelen.sa/api/Website/Settings/GetWebSiteMetaDatas',   {
     method: "GET",
     headers: {
@@ -25,11 +28,11 @@ export async function generateMetadata() {
   // const metaDataDetail = await res.json();
 
   return {
-      title: metaDataDetail.enTitle,
-      description: metaDataDetail.enDescription,
+      title: router.locale == 'ar'?metaDataDetail.arTitle: metaDataDetail.enTitle,
+      description:router.locale == 'ar'?metaDataDetail.arDescription: metaDataDetail.enDescription,
       openGraph: {
-          title: metaDataDetail.enTitle,
-          description: metaDataDetail.enDescription,
+          title:router.locale == 'ar'?metaDataDetail.arTitle: metaDataDetail.enTitle,
+          description: router.locale == 'ar'?metaDataDetail.arDescription: metaDataDetail.enDescription,
           url: 'https://practice-delta-ruddy.vercel.app/en',
           siteName: 'fidelen',
           images: [
