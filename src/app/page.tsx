@@ -1,22 +1,46 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 
-export const metadata = {
-  openGraph: {
-    title: 'Next.js',
-    description: 'The React Framework for the Web',
-    url: 'https://practice-delta-ruddy.vercel.app',
-    siteName: 'Next.js',
-    images: [
-      {
-        url: 'https://fidelenpubdev.s3.eu-north-1.amazonaws.com/pub/Uploads/WebsiteMetadata/9c61fe43-ab6f-4827-933b-9e0843e85e84_968db01904bc4cf75f54c30736d2b965.jpg', // Must be an absolute URL
-        width: 800,
-        height: 600,
+export async function generateMetadata() {
+  const getAllMetaData = await fetch('https://websiteapi-dev.fidelen.sa/api/Website/Settings/GetWebSiteMetaDatas',   {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!getAllMetaData.ok) {
+    throw new Error("Failed to fetch meta list");
+  }
+
+  const AllMetaDataList = await getAllMetaData.json();
+
+  const { data: AllMetaDataTags } = AllMetaDataList;
+
+  // Assuming homepage data is at a specific index or has a specific property
+  const metaDataDetail = AllMetaDataTags.find(
+    (page: any) => page.pageType === 1
+  ); // Adjust the condition as per your data
+  // const metaDataDetail = await res.json();
+
+  return {
+      title: metaDataDetail.enTitle,
+      description: metaDataDetail.enDescription,
+      openGraph: {
+          title: metaDataDetail.enTitle,
+          description: metaDataDetail.enDescription,
+          url: 'https://practice-delta-ruddy.vercel.app/en',
+          siteName: 'fidelen',
+          images: [
+              {
+                  url: metaDataDetail.ogImageUrl,
+              },
+          ],
+          locale: 'en',
+          type: 'website',
       },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
+  };
 }
 
 export default function Home() {

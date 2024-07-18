@@ -7,12 +7,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,
+      alternates: {
+        languages: {
+          en: 'https://practice-delta-ruddy.vercel.app/en',
+          ar: 'https://practice-delta-ruddy.vercel.app/ar',
+        },
+      },
     },
     {
-      url: 'https://practice-delta-ruddy.vercel.app/about/ar',
+      url: 'https://practice-delta-ruddy.vercel.app/about',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
+      alternates: {
+        languages: {
+          en: 'https://practice-delta-ruddy.vercel.app/en/about',
+          ar: 'https://practice-delta-ruddy.vercel.app/ar/about',
+        },
+      },
     },
     
   ]
