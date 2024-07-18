@@ -29,7 +29,7 @@ export async function generateMetadata() {
       openGraph: {
           title: metaDataDetail.enTitle,
           description: metaDataDetail.enDescription,
-          url: 'https://practice-delta-ruddy.vercel.app/about',
+          url: 'https://practice-delta-ruddy.vercel.app/faq',
           siteName: 'fidelen',
           images: [
               {
