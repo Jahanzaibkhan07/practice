@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: 'https://practice-delta-ruddy.vercel.app/about',
+      url: 'https://practice-delta-ruddy.vercel.app/about/ar',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
